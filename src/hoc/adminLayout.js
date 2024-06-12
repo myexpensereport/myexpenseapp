@@ -1,0 +1,90 @@
+import React from "react";
+import Header from './../common/header';
+import BarChart from './../common/BarChart';
+import Sidebar from './../common/sidebar';
+import LineChart from './../common/LineChart';
+import PieArcLabel from './../common/PieArcLabel';
+import TransanctionHistory from './../transanctionhistory/TransanctionHistory';
+import { Preloader, Bars } from 'react-preloader-icon';
+import Chart from "react-apexcharts";
+
+
+const adminLayout = (ChildComponent) => {
+    class AdminLayout extends React.Component {
+        constructor(props){
+            super(props);
+    
+            this.state = {
+                pageLoaded: false,
+                saveLeadClickEvent: ""
+            };
+        }
+
+        componentDidMount(){
+            setTimeout(() => {
+                this.setState(() => ({
+                    pageLoaded: true
+                }))
+            }, 1000);
+        }
+
+        renderHtml(){
+            if(!this.state.pageLoaded){
+                return <div className="loading-page">
+                    <div className="center">
+                        <Preloader use={Bars} size={60} strokeWidth={10} strokeColor="#f7b085" duration={600} />
+                    </div>
+              </div>
+            }
+
+            return <div className="d-flex" id="wrapper">
+                {/* <!-- Sidebar--> */}
+                <Sidebar/>
+                {/* <!-- Page content wrapper--> */}
+                <div className="main" id="page-content-wrapper">
+                <Header />
+                    {/* <!-- Top navigation--> */}
+                    {/* <!-- Page content--> */}
+                    <div >
+                        <ChildComponent {...this.props} />
+                    </div>
+                    
+                    <div className="d-flex flex-row-reverse" >
+                    <div className="p-1">
+                    <PieArcLabel />
+                    </div>
+                    <div className="p-1">
+                    <TransanctionHistory />
+                    </div>
+                    </div>
+                    
+                </div>
+             
+            </div>
+           
+            
+        }
+
+        addLeadModalFooterContent(){ 
+            return <>
+                <div style={{width:"100%"}}>
+                    <button onClick={(e) => this.setState(() => ({saveLeadClickEvent: (Math.random() + 1).toString(36).substring(7)}))} className="btn btn-default low-height-btn">Add Lead</button> 
+                </div>
+            </>;
+        }
+
+        handleParentData = (e) => {
+            console.log(e);
+        }
+
+        render(){
+            return <>
+                {this.renderHtml()}
+            </>
+        }
+    }
+
+    return AdminLayout;
+}
+
+export default adminLayout;

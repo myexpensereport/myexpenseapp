@@ -1,0 +1,67 @@
+{
+  "name": "myexpenseapp",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@barchart/common-js": "^4.42.0",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@fortawesome/fontawesome-free": "^6.5.2",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "@mui/material": "^5.15.18",
+    "@mui/x-charts": "^7.5.1",
+    "@mui/x-date-pickers": "^7.6.1",
+    "@tanstack/react-query": "^5.40.0",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "bootstrap": "^5.3.3",
+    "chart.js": "^2.9.4",
+    "dayjs": "^1.11.11",
+    "material-react-table": "^2.13.0",
+    "mdb-react-ui-kit": "^8.0.0",
+    "primereact": "^10.6.6",
+    "react": "^18.3.1",
+    "react-apexcharts": "^1.4.1",
+    "react-axios": "^2.0.6",
+    "react-bootstrap": "^2.10.2",
+    "react-chartjs-2": "^5.2.0",
+    "react-data-table-component": "^7.6.2",
+    "react-datepicker": "^6.9.0",
+    "react-dom": "^18.3.1",
+    "react-perfect-scrollbar": "^1.5.8",
+    "react-preloader-icon": "^1.0.0",
+    "react-router-dom": "^6.23.1",
+    "react-scripts": "5.0.1",
+    "reactstrap": "^9.2.2",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
