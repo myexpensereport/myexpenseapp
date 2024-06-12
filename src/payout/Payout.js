@@ -8,14 +8,18 @@ import { Link } from 'react-router-dom';
 import ChartsOverview from '../common/ChartsOverview';
 import HomeIcon from '../common/HomeIcon';
 
+import { CSVLink } from "react-csv";
+
 const Payout = () => {
 
 	const url = 'http://localhost:8888/payout/getAllPayout'
 	const [records, setRecords] = useState([]);
 	const [filterRecords, setFilterRecords] = useState([]);
-	
+
 	const [totalInvestAmount, setTotalInvestAmount] = useState([]);
 	const [totalReturnAmount, setTotalReturnAmount] = useState([]);
+	
+	const [csvData, setCsvData] = useState([]);
 
 
 	const column = [
@@ -36,7 +40,7 @@ const Payout = () => {
 		},
 		{
 			name: "Total Return",
-			selector: row => (row.interstAmount+ row.bonus),
+			selector: row => (row.interstAmount + row.bonus),
 			sortable: true
 		},
 		{
@@ -74,7 +78,7 @@ const Payout = () => {
 			selector: row => row.redeem,
 			sortable: true
 		},
-		
+
 		{
 			name: "Balance Fund",
 			selector: row => row.balanceFund,
@@ -110,6 +114,7 @@ const Payout = () => {
 					setFilterRecords(res.data)
 					setTotalInvestAmount(res.data)
 					setTotalReturnAmount(res.data)
+					setCsvData(res.data)
 				})
 				.catch(err => console.log(err));
 		}
@@ -129,20 +134,20 @@ const Payout = () => {
 	}
 	function getReturnedAmount() {
 		let t = 0;
-		const res = totalReturnAmount.map(({ interstAmount}) => t = t + interstAmount);
+		const res = totalReturnAmount.map(({ interstAmount }) => t = t + interstAmount);
 		console.log("res::::" + res);
-		const finalRes = totalReturnAmount.map(({ bonus}) => t = t + bonus);
+		const finalRes = totalReturnAmount.map(({ bonus }) => t = t + bonus);
 		console.log("finalRes::::" + finalRes);
 		return t;
 	}
-	
-	
+
+
 	return (
 		<div>
-		<div><Link tag="a" className="" to="/dashboardpage"><HomeIcon />
+			<div><Link tag="a" className="" to="/dashboardpage"><HomeIcon />
 				<i className="fa fa-dashboard"></i> Home
 			</Link></div>
-			<div class="p-4 mb-2 bg-success text-white"><b><center> Total InvestedAmount = {getTotalInvestAmount()} | Total ReturnedAmount = {getReturnedAmount()}</center></b></div>
+			<div class="bg-success text-white"><b><center> Total InvestedAmount = {getTotalInvestAmount()} | Total ReturnedAmount = {getReturnedAmount()}</center></b></div>
 			<div>
 				<div>
 					<center><h1>Payout Details</h1></center>
@@ -151,9 +156,19 @@ const Payout = () => {
 			<div>
 				<ChartsOverview />
 			</div>
+			<div>
+
+			</div>
+
 			<div style={{ padding: "10px 20px", justifyContent: 'left' }} >
 				<div style={{ display: 'flex', justifyContent: 'right' }}>
 					<input type="text" placeholder='Search....' onChange={handleFilter} style={{ padding: '6px 10px' }} />
+	     				 {/* Export Button Start */}
+					<div class="bg-danger text-white">
+						<CSVLink className="downloadbtn" filename="payout.csv" data={csvData}>
+							Export to CSV
+						</CSVLink>
+					</div>
 				</div>
 				<DataTable
 					columns={column}

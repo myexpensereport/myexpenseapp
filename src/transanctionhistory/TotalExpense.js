@@ -6,6 +6,7 @@ import axios from 'axios';
 import DataTable from 'react-data-table-component';
 import HomeIcon from './../common/HomeIcon';
 import { Link } from 'react-router-dom';
+import { CSVLink } from "react-csv";
 
 const TotalExpense = () => {
 
@@ -13,6 +14,7 @@ const TotalExpense = () => {
 	const [records, setRecords] = useState([]);
 	const [filterRecords, setFilterRecords] = useState([]);
 	const [totalAmount, setTotalAmount] = useState([]);
+	const [csvData, setCsvData] = useState([]);
 
 	const column = [
 		{
@@ -61,6 +63,7 @@ const TotalExpense = () => {
 					setRecords(res.data)
 					setFilterRecords(res.data)
 					setTotalAmount(res.data)
+					setCsvData(res.data)
 				})
 				.catch(err => console.log(err));
 		}
@@ -88,6 +91,11 @@ const TotalExpense = () => {
 			<div style={{ padding: "10px 20px", justifyContent: 'left' }} >
 				<div style={{ display: 'flex', justifyContent: 'right' }}>
 					<input type="text" placeholder='Search....' onChange={handleFilter} style={{ padding: '6px 10px' }} />
+				<div class="bg-danger text-white">
+						<CSVLink className="downloadbtn" filename="totalexpense.csv" data={csvData}>
+							Export to CSV
+						</CSVLink>
+					</div>
 				</div>
 				<DataTable
 					columns={column}

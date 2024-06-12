@@ -6,6 +6,7 @@ import axios from 'axios';
 import DataTable from 'react-data-table-component';
 import HomeIcon from './../common/HomeIcon';
 import { Link } from 'react-router-dom';
+import { CSVLink } from "react-csv";
 
 const DailyExpense = () => {
 
@@ -13,6 +14,7 @@ const DailyExpense = () => {
 	const [records, setRecords] = useState([]);
 	const [filterRecords, setFilterRecords] = useState([]);
 	const [totalAmount, setTotalAmount] = useState([]);
+	const [csvData, setCsvData] = useState([]);
 
 	const column = [
 		{
@@ -39,11 +41,11 @@ const DailyExpense = () => {
 			sortable: true
 		},
 		{
-			name : "Action",
-            cell: row => <button className="btn btn-success" onClick={() => (row.id)} style = {{marginLeft:"1px"}}>Update</button>,
-            ignoreRowClick: true,
-            allowOverflow: true,
-            button: true,
+			name: "Action",
+			cell: row => <button className="btn btn-success" onClick={() => (row.id)} style={{ marginLeft: "1px" }}>Update</button>,
+			ignoreRowClick: true,
+			allowOverflow: true,
+			button: true,
 		}
 	]
 
@@ -68,6 +70,7 @@ const DailyExpense = () => {
 					setRecords(res.data)
 					setFilterRecords(res.data)
 					setTotalAmount(res.data)
+					setCsvData(res.data)
 				})
 				.catch(err => console.log(err));
 		}
@@ -90,22 +93,27 @@ const DailyExpense = () => {
 	return (
 		<div>
 			<div><Link tag="a" className="" to="/dashboardpage"><HomeIcon />
-                            <i className="fa fa-dashboard"></i> Home
-                        </Link></div>
+				<i className="fa fa-dashboard"></i> Home
+			</Link></div>
 			<div class="p-4 mb-2 bg-success text-white"><b><center> Total Daily Expense : {findSumUsingMap()}</center></b></div>
-            <div style={{padding:"10px 20px", justifyContent : 'left'}} >
-            <div style={{display:'flex', justifyContent : 'right'}}>
-            <input type = "text" placeholder='Search....' onChange = {handleFilter} style={{padding:'6px 10px'}}/> 
-            </div>
-            <DataTable
-            columns={column}
-            customStyles = {customStyles}
-            data={records}
-            pagination
-            selectableRows>
-           </DataTable>
-            </div>
-            </div>
+			<div style={{ padding: "10px 20px", justifyContent: 'left' }} >
+				<div style={{ display: 'flex', justifyContent: 'right' }}>
+					<input type="text" placeholder='Search....' onChange={handleFilter} style={{ padding: '6px 10px' }} />
+					<div class="bg-danger text-white">
+						<CSVLink className="downloadbtn" filename="dailyexpense.csv" data={csvData}>
+							Export to CSV
+						</CSVLink>
+					</div>
+				</div>
+				<DataTable
+					columns={column}
+					customStyles={customStyles}
+					data={records}
+					pagination
+					selectableRows>
+				</DataTable>
+			</div>
+		</div>
 	);
 }
 export default DailyExpense;
