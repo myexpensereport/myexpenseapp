@@ -1,8 +1,6 @@
 import './App.css';
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Home from './home/Home.js';
 import Register from './register/Register.js';
 import ForgotPassword from './forgotpassword/ForgotPassword.js';
 import ResetPassword from './resetpassword/ResetPassword.js';
@@ -10,9 +8,6 @@ import DashboardPage from './pages/DashboardPage';
 import './assets/css/app.css';
 import TypographyPage from './pages/TypographyPage'
 import LoginPage from './pages/auth/LoginPage'
-import ProfilePage from './pages/profile/ProfilePage';
-import ChangePasswordPage from './pages/profile/ChangePasswordPage';
-import UserPreferencesPage from './pages/profile/UserPreferencesPage'
 import AdminBlankPage from './pages/AdminBlankPage';
 import SavingPlan from './saving/SavingPlan';
 import AddSavingPlan from './saving/AddSavingPlan';
@@ -71,9 +66,6 @@ function App() {
 					/>
 				<Route exact path='/DashboardPage' element={<DashboardPage/>} />
 				<Route exact path='/login' element={<LoginPage/>} />
-                <Route exact path='/profile' element={<ProfilePage/>} />
-                <Route exact path='/change-password' element={<ChangePasswordPage/>} />
-                <Route exact path='/preferences' element={<UserPreferencesPage/>} />
                 <Route exact path='/typography' element={<TypographyPage/>} />
                 <Route exact path='/blank-page' element={<AdminBlankPage/>} />
                 <Route exact path='/DashBoardChart' element={<DashBoardChart/>} />
@@ -88,7 +80,6 @@ function App() {
                 <Route exact path='/TotalExpense' element={<TotalExpense/>} />
                 <Route exact path='/Payout' element={<Payout/>} />
                 <Route exact path='/PayoutAddAndUpdate' element={<PayoutAddAndUpdate/>} />
-                
                 <Route exact path='/PayoutList' element={<PayoutList/>} />
                 <Route exact path='/PayoutComponent' element={<PayoutComponent/>} />
                 <Route exact path='/PayoutComponent/:id' element={<PayoutComponent/>} />
