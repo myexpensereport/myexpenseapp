@@ -22,6 +22,7 @@
     "bootstrap": "^5.3.3",
     "chart.js": "^2.9.4",
     "dayjs": "^1.11.11",
+    "jspdf-react": "^1.0.11",
     "material-react-table": "^2.13.0",
     "mdb-react-ui-kit": "^8.0.0",
     "primereact": "^10.6.6",
@@ -38,6 +39,7 @@
     "react-preloader-icon": "^1.0.0",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
+    "react-to-pdf": "^1.0.1",
     "reactstrap": "^9.2.2",
     "web-vitals": "^2.1.4"
   },

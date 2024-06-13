@@ -58,7 +58,7 @@ const PayoutComponent = () => {
     }
     
     function getStartDate(startDate) {
-            console.log("getStartDate");
+            console.log("getStartDate#####"+startDate);
             let nextDate = dayjs(startDate);
             nextDate = nextDate.setDate(nextDate);
             setStartDate(nextDate);
@@ -74,7 +74,7 @@ const PayoutComponent = () => {
         
       function getReturnEarnDate(endDate) {
             console.log("getReturnEarnDate:::");
-            let nextDate = dayjs(endDate);
+            let nextDate = new Date(endDate);
             nextDate = nextDate.setDate(nextDate);
             setStartDate(nextDate);
 

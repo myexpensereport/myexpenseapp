@@ -18,22 +18,27 @@ class Sidebar extends React.Component {
                     </li>
                     <li className="mb-1">
                         <Link tag="a" className="" to="/dashboardpage">
-                            <i className="fa fa-dashboard"></i> Dashboard
+                            <i className="fa fa-dashboard"></i>Expense Dashboard
                         </Link>
                     </li>
                     <li className="mb-1">
                         <Link tag="a" className="" to="/addexpenses">
-                            <i className="fa fa-file-o"></i> Add Expenses
+                            <i className="fa fa-file-o"></i>Add Expenses
                         </Link>
                     </li>
                     <li className="mb-1">
                         <Link tag="a" className="" to="/addsavingplan">
-                            <i className="fa fa-file-o"></i> Add Saving Plan
+                            <i className="fa fa-file-o"></i>Add Saving Plan
                         </Link>
                     </li>
                     <li className="mb-1">
                         <Link tag="a" className="" to="/savingplan">
-                            <i className="fa fa-file-o"></i> Saving Plan Details
+                            <i className="fa fa-file-o"></i>Saving Details
+                        </Link>
+                    </li>
+                    <li className="mb-1">
+                        <Link tag="a" className="" to="/PayoutList">
+                            <i className="fa fa-file-o"></i>Payout Add/Update
                         </Link>
                     </li>
                     <li className="mb-1">
@@ -41,11 +46,7 @@ class Sidebar extends React.Component {
                             <i className="fa fa-file-o"></i>Payout Details
                         </Link>
                     </li>
-                    <li className="mb-1">
-                        <Link tag="a" className="" to="/PayoutList">
-                            <i className="fa fa-file-o"></i>Payout ADD/Update
-                        </Link>
-                    </li>
+                    
                    
                 </ul>
              

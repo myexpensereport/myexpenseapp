@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import "../../assets/css/profile.css"
 import userProfileLayout from "../../hoc/userProfileLayout";
 
@@ -72,4 +72,4 @@ class UserPreferencesPage extends React.Component {
     }
 }
 
-export default userProfileLayout(UserPreferencesPage);
+export default userProfileLayout(UserPreferencesPage);*/

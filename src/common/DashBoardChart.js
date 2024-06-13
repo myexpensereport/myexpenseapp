@@ -1,17 +1,13 @@
 import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart';
 
 import React, { useState, useEffect } from 'react';
-import adminLayout from "../hoc/adminLayout"
-import { useNavigate } from 'react-router-dom';
-import AuthService from '../authservice/AuthService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import DataTable from 'react-data-table-component';
 
 	
 
 
-function PieArcLabel() {
+function DashBoardChart() {
 	 <h5>Pie Chart</h5>
 	 
 	 const dailyurl = 'http://localhost:8888/myexpense/getAllExpensesReport/daily';
@@ -151,4 +147,4 @@ const size = {
     
   );
 }
-export default PieArcLabel;
+export default DashBoardChart;

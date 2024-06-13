@@ -27,12 +27,8 @@ import PayoutAddAndUpdate from './payout/PayoutAddAndUpdate';
 import PayoutComponent from './payout/PayoutComponent';
 import PayoutList from './payout/PayoutList';
 
-
-
-
-import PieArcLabel from './common/PieArcLabel';
+import DashBoardChart from './common/DashBoardChart';
 import AddExpenses from './addexpenses/AddExpenses';
-/*import TransanctionHistory from './transanctionhistory/TransanctionHistory'*/
 
 
 import {
@@ -80,7 +76,7 @@ function App() {
                 <Route exact path='/preferences' element={<UserPreferencesPage/>} />
                 <Route exact path='/typography' element={<TypographyPage/>} />
                 <Route exact path='/blank-page' element={<AdminBlankPage/>} />
-                <Route exact path='/PieArcLabel' element={<PieArcLabel/>} />
+                <Route exact path='/DashBoardChart' element={<DashBoardChart/>} />
                 <Route exact path='/SavingPlan' element={<SavingPlan/>} />
                 <Route exact path='/AddExpenses' element={<AddExpenses/>} />
                 <Route exact path='/AddSavingPlan' element={<AddSavingPlan/>} />
@@ -96,9 +92,7 @@ function App() {
                 <Route exact path='/PayoutList' element={<PayoutList/>} />
                 <Route exact path='/PayoutComponent' element={<PayoutComponent/>} />
                 <Route exact path='/PayoutComponent/:id' element={<PayoutComponent/>} />
-                  
                 
-					
 				</Routes>
 			</Router>
 		</>

@@ -1,13 +1,11 @@
 import { BarChart } from '@mui/x-charts/BarChart';
 import React, { useState, useEffect } from 'react';
-import adminLayout from "../hoc/adminLayout"
-import { useNavigate } from 'react-router-dom';
-import AuthService from '../authservice/AuthService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import DataTable from 'react-data-table-component';
+import { axisClasses } from '@mui/x-charts/ChartsAxis';
 
-export default function ChartsOverview() {
+
+export default function PayoutBarChart() {
 	
 	const janPayouturl = 'http://localhost:8888/payout/getAllPayout/Jan'
 	const febPayouturl = 'http://localhost:8888/payout/getAllPayout/Feb'
@@ -191,18 +189,90 @@ export default function ChartsOverview() {
 		fetchDecMonthData();
 	}, []);
 
-	
+
+const dataset = [
+  {
+    earnedPayout: totalJanEarnedPayout,
+    month: 'Jan',
+  },
+  {
+    earnedPayout: totalFebEarnedPayout,
+    month: 'Feb',
+  },
+  {
+    earnedPayout: totalMarchEarnedPayout,
+    month: 'Mar',
+  },
+  {
+    
+    earnedPayout: totalAprilEarnedPayout,
+    month: 'Apr',
+  },
+  {
+    
+    earnedPayout: totalMayEarnedPayout,
+    month: 'May',
+  },
+  {
+    
+    earnedPayout: totalJuneEarnedPayout,
+    month: 'June',
+  },
+  {
+   
+    earnedPayout: totalJulyEarnedPayout,
+    month: 'July',
+  },
+  {
+   
+    earnedPayout: totaAugEarnedPayout,
+    month: 'Aug',
+  },
+  {
+   
+    earnedPayout: totalSeptEarnedPayout,
+    month: 'Sept',
+  },
+  {
+    
+    earnedPayout: totalOctEarnedPayout,
+    month: 'Oct',
+  },
+  {
+   
+    earnedPayout: totalNovEarnedPayout,
+    month: 'Nov',
+  },
+  {
+   
+    earnedPayout: totalDecEarnedPayout,
+    month: 'Dec',
+  },
+];
+
+const valueFormatter = (value) => `${value}`;
+
+const chartSetting = {
+  series: [{ dataKey: 'earnedPayout', label: 'Total Returned', valueFormatter }],
+  height: 300,
+  sx: {
+    [`& .${axisClasses.directionY} .${axisClasses.label}`]: {
+      transform: 'translateX(-10px)',
+    },
+  },
+};
+
 
   return (
-    <BarChart
-      series={[
-        { data: [totalJanEarnedPayout, totalFebEarnedPayout, totalMarchEarnedPayout, totalAprilEarnedPayout] },
-        { data: [totalMayEarnedPayout, totalJuneEarnedPayout, totalJulyEarnedPayout, totaAugEarnedPayout] },
-        { data: [totalSeptEarnedPayout, totalOctEarnedPayout, totalNovEarnedPayout, totalDecEarnedPayout] },
-      ]}
-      height={290}
-      xAxis={[{ data: ['Jan-Apr', 'Q2', 'Q3', 'Q4'], scaleType: 'band' }]}
-      margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
-    />
+    <div style={{ width: '100%' }}>
+      
+      <BarChart
+        dataset={dataset}
+        xAxis={[
+          { scaleType: 'band', dataKey: 'month'},
+        ]}
+        {...chartSetting}
+      />
+    </div>
   );
 }

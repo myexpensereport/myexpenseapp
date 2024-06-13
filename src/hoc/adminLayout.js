@@ -1,12 +1,9 @@
 import React from "react";
 import Header from './../common/header';
-import BarChart from './../common/BarChart';
 import Sidebar from './../common/sidebar';
-import LineChart from './../common/LineChart';
-import PieArcLabel from './../common/PieArcLabel';
+import DashBoardChart from './../common/DashBoardChart';
 import TransanctionHistory from './../transanctionhistory/TransanctionHistory';
 import { Preloader, Bars } from 'react-preloader-icon';
-import Chart from "react-apexcharts";
 
 
 const adminLayout = (ChildComponent) => {
@@ -51,7 +48,7 @@ const adminLayout = (ChildComponent) => {
                     
                     <div className="d-flex flex-row-reverse" >
                     <div className="p-1">
-                    <PieArcLabel />
+                    <DashBoardChart />
                     </div>
                     <div className="p-1">
                     <TransanctionHistory />

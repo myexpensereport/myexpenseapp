@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import AuthService from '../authservice/AuthService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import DataTable from 'react-data-table-component';
 import { Link } from 'react-router-dom';
-import ChartsOverview from '../common/ChartsOverview';
+import PayoutBarChart from '../common/PayoutBarChart';
 import HomeIcon from '../common/HomeIcon';
 
 import { CSVLink } from "react-csv";
@@ -18,7 +16,7 @@ const Payout = () => {
 
 	const [totalInvestAmount, setTotalInvestAmount] = useState([]);
 	const [totalReturnAmount, setTotalReturnAmount] = useState([]);
-	
+
 	const [csvData, setCsvData] = useState([]);
 
 
@@ -154,7 +152,7 @@ const Payout = () => {
 				</div>
 			</div>
 			<div>
-				<ChartsOverview />
+				<PayoutBarChart />
 			</div>
 			<div>
 
@@ -163,7 +161,7 @@ const Payout = () => {
 			<div style={{ padding: "10px 20px", justifyContent: 'left' }} >
 				<div style={{ display: 'flex', justifyContent: 'right' }}>
 					<input type="text" placeholder='Search....' onChange={handleFilter} style={{ padding: '6px 10px' }} />
-	     				 {/* Export Button Start */}
+					{/* Export Button Start */}
 					<div class="bg-danger text-white">
 						<CSVLink className="downloadbtn" filename="payout.csv" data={csvData}>
 							Export to CSV
