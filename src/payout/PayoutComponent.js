@@ -11,17 +11,17 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 const PayoutComponent = () => {
 
     const [schemeName, setSchemeName] = useState('')
-    const [investAmount, setInvestAmount] = useState('')
+    const [investAmount, setInvestAmount] = useState(0)
     const [expectedAmount, setExpectedAmount] = useState(0)
     const [startDate, setStartDate] = useState(dayjs('06-10-2024'))
     const [endDate, setEndDate] = useState(dayjs('06-10-2024'))
-    const [tenure, setTenure] = useState('')
+    const [tenure, setTenure] = useState(0)
     const [returnEarnedDate, setReturnEarnedDate] = useState(dayjs('06-10-2024'))
-    const [interstAmount, setInterstAmount] = useState('')
-    const [redeem, setRedeem] = useState('')
-    const [bonus, setBonus] = useState('')
-    const [balanceFund, setBalanceFund] = useState('')
-    const [totalEarned, setTotalEarned] = useState('')
+    const [interstAmount, setInterstAmount] = useState(0)
+    const [redeem, setRedeem] = useState(0)
+    const [bonus, setBonus] = useState(0)
+     const [totalEarned, setTotalEarned] = useState(0)
+    const [balanceFund, setBalanceFund] = useState(0)
     const [status, setStatus] = useState('')
     
 
@@ -32,8 +32,8 @@ const PayoutComponent = () => {
     const saveOrUpdatePayout = (e) => {
         e.preventDefault();
 
-        const payload = {schemeName,investAmount,expectedAmount,startDate,endDate,tenure,returnEarnedDate,interstAmount,
-        				redeem,bonus, balanceFund,totalEarned, status}
+        const payload = {schemeName,investAmount,expectedAmount,tenure,interstAmount,
+        				redeem,bonus, totalEarned,balanceFund, startDate,endDate,returnEarnedDate,status}
 
         console.log(payload);
         if(id){
@@ -87,15 +87,15 @@ const PayoutComponent = () => {
                 setSchemeName(response.data.schemeName)
                 setInvestAmount(response.data.investAmount)
                 setExpectedAmount(response.data.expectedAmount)
-                setStartDate(getStartDate(response.data.startDate))
-                setEndDate(getEndDate(response.data.endDate))
                 setTenure(response.data.tenure)
-                setReturnEarnedDate(getReturnEarnDate(response.data.returnEarnedDate))
                 setInterstAmount(response.data.interstAmount)
                 setRedeem(response.data.redeem)
                 setBonus(response.data.bonus)
-                setBalanceFund(response.data.balanceFund)
                 setTotalEarned(response.data.totalEarned)
+                setBalanceFund(response.data.balanceFund)
+                setStartDate(getStartDate(response.data.startDate))
+                setEndDate(getEndDate(response.data.endDate))
+                setReturnEarnedDate(getReturnEarnDate(response.data.returnEarnedDate))
                 setStatus(response.data.status)
             }).catch(error => {
                 console.log(error)
@@ -162,25 +162,6 @@ const PayoutComponent = () => {
                                     >
                                     </input>
                                 </div>
-                                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-										<DemoContainer components={['DatePicker', 'DatePicker']}>
-											<DatePicker
-												label="Start Date"
-												value={startDate}
-												onChange={(newValue) => setStartDate(newValue)}
-											/>
-										</DemoContainer>
-									</LocalizationProvider>
-
-									<LocalizationProvider dateAdapter={AdapterDayjs}>
-										<DemoContainer components={['DatePicker', 'DatePicker']}>
-											<DatePicker
-												label="End date"
-												value={endDate}
-												onChange={(newValue) => setEndDate(newValue)}
-											/>
-										</DemoContainer>
-									</LocalizationProvider>
 
                                 <div className = "form-group mb-2">
                                     <label className = "form-label"> Tenure :</label>
@@ -194,18 +175,6 @@ const PayoutComponent = () => {
                                     >
                                     </input>
                                 </div>
-                                 
-                                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-										<DemoContainer components={['DatePicker', 'DatePicker']}>
-											<DatePicker
-												label="ReturnEarned Date"
-												value={returnEarnedDate}
-												onChange={(newValue) => setReturnEarnedDate(newValue)}
-											/>
-										</DemoContainer>
-									</LocalizationProvider>
-                                 
-
                                 <div className = "form-group mb-2">
                                     <label className = "form-label"> Interst Amount :</label>
                                     <input
@@ -269,6 +238,34 @@ const PayoutComponent = () => {
                                     >
                                     </input>
                                 </div>
+                                <LocalizationProvider dateAdapter={AdapterDayjs}>
+										<DemoContainer components={['DatePicker', 'DatePicker']}>
+											<DatePicker
+												label="Start Date"
+												value={startDate}
+												onChange={(newValue) => setStartDate(newValue)}
+											/>
+										</DemoContainer>
+									</LocalizationProvider>
+
+									<LocalizationProvider dateAdapter={AdapterDayjs}>
+										<DemoContainer components={['DatePicker', 'DatePicker']}>
+											<DatePicker
+												label="End date"
+												value={endDate}
+												onChange={(newValue) => setEndDate(newValue)}
+											/>
+										</DemoContainer>
+									</LocalizationProvider>
+									 <LocalizationProvider dateAdapter={AdapterDayjs}>
+										<DemoContainer components={['DatePicker', 'DatePicker']}>
+											<DatePicker
+												label="ReturnEarned Date"
+												value={returnEarnedDate}
+												onChange={(newValue) => setReturnEarnedDate(newValue)}
+											/>
+										</DemoContainer>
+									</LocalizationProvider>
                                  <div className = "form-group mb-2">
                                     <label className = "form-label"> Status :</label>
                                     <input

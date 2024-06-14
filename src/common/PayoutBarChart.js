@@ -252,6 +252,7 @@ const dataset = [
 
 const valueFormatter = (value) => `${value}`;
 
+
 const chartSetting = {
   series: [{ dataKey: 'earnedPayout', label: 'Total Returned', valueFormatter }],
   height: 300,

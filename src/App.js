@@ -20,7 +20,6 @@ import TotalExpense from './transanctionhistory/TotalExpense';
 import Payout from './payout/Payout';
 import PayoutAddAndUpdate from './payout/PayoutAddAndUpdate';
 import PayoutComponent from './payout/PayoutComponent';
-import PayoutList from './payout/PayoutList';
 
 import DashBoardChart from './common/DashBoardChart';
 import AddExpenses from './addexpenses/AddExpenses';
@@ -80,7 +79,6 @@ function App() {
                 <Route exact path='/TotalExpense' element={<TotalExpense/>} />
                 <Route exact path='/Payout' element={<Payout/>} />
                 <Route exact path='/PayoutAddAndUpdate' element={<PayoutAddAndUpdate/>} />
-                <Route exact path='/PayoutList' element={<PayoutList/>} />
                 <Route exact path='/PayoutComponent' element={<PayoutComponent/>} />
                 <Route exact path='/PayoutComponent/:id' element={<PayoutComponent/>} />
                 

@@ -1,35 +1,99 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import AuthService from '../authservice/AuthService';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import axios from 'axios';
+import React, {useState, useEffect} from 'react'
+import {listPayout,deletePayout} from '../authservice/PayoutService';
+import { useNavigate,Link } from 'react-router-dom'
 import DataTable from 'react-data-table-component';
-import { Link } from 'react-router-dom';
+import HomeIcon from '../common/HomeIcon';
 
 const PayoutAddAndUpdate = () => {
 
-	const url = 'http://localhost:8888/myexpense/getAllSavingPlan'
-	const [records, setRecords] = useState([]);
-	const [filterRecords, setFilterRecords] = useState([]);
-	const [deleteRecords, setDeleteRecords] = useState([]);
-	const [updateRecords, setUpdaterRecords] = useState([]);
+    const [payout, setPayout] = useState([])
 
+    useEffect(() => {
+        getAllPayout();
+    }, [])
+    
+    const navigate = useNavigate()
 
-	const column = [
+    const getAllPayout = () => {
+        listPayout().then((response) => {
+            setPayout(response.data)
+            console.log(response.data);
+        }).catch(error =>{
+            console.log("getAllPayout:::"+error);
+        })
+    }
+
+const removePayout = (payoutId) => {
+	console.log("removePayout:::::"+payoutId);
+       deletePayout(payoutId).then((response) =>{
+		   console.log(response.data);
+        getAllPayout();
+
+       }).catch(error =>{
+           console.log("Delete Error:::"+error);
+       })
+        
+    }
+
+    function addNewPayout() {
+        navigate('/PayoutComponent')
+    }
+
+    const updatePayout = (id) => {
+        navigate(`/PayoutComponent/${id}`)
+    }
+    
+    const column = [
 		{
-
-			name: "SchemeName",
-			selector: row => row.schemeName,
-			sortable: true
+			name: "SchemeID",
+			selector: row => row.id,
+			sortable: true,
 		},
 		{
-			name: "Ivenset Amount",
+			name: "SchemeName",
+			selector: row => row.schemeName,
+			sortable: true,
+		},
+		{
+			name: "Invest Amount",
 			selector: row => row.investAmount,
 			sortable: true
 		},
 		{
-			name: "Intrest Amount",
-			selector: row => row.intrestAmount,
+			name: "Expected Amount",
+			selector: row => row.expectedAmount,
+			sortable: true
+		},
+		{
+			name: "Tenure",
+			selector: row => row.tenure,
+			sortable: true
+		},
+		
+		{
+			name: "Interst Amount",
+			selector: row => row.interstAmount,
+			sortable: true
+		},
+		
+		{
+			name: "Reedem",
+			selector: row => row.redeem,
+			sortable: true
+		},
+		{
+			name: "Bonus",
+			selector: row => row.bonus,
+			sortable: true
+		},
+		{
+			name: "Total Returned",
+			selector: row => row.totalEarned,
+			sortable: true
+		},
+		{
+			name: "Balance Fund",
+			selector: row => row.balanceFund,
 			sortable: true
 		},
 		{
@@ -41,18 +105,34 @@ const PayoutAddAndUpdate = () => {
 			name: "End Date",
 			selector: row => row.endDate,
 			sortable: true
-		
-		}
-		/*{
-			name: "DeleteAction",
-			cell : (row)=> <button className ='btn btn-primary' onClick={handleUpdate()} > Edit </button>
 		},
 		{
-			name: "UpdateAction",
-			cell : (row)=> <button className ='btn btn-primary' onClick={handleDelete()} > Delete </button>
-		}*/
+			name: "Return Earn Date",
+			selector: row => row.returnEarnedDate,
+			sortable: true
+		},
+		{
+			name: "Status",
+			selector: row => row.status,
+			sortable: true
+		},
+		{
+			name : "UpdateAction",
+            cell: row => <button className="btn btn-info" onClick={() => updatePayout(row.id)} style = {{marginLeft:"1px"}}>Update</button>,
+            ignoreRowClick: true,
+            allowOverflow: true,
+            button: true,
+		},
+		{
+			name : "DeleteAction",
+            cell: row =>  <button className = "btn btn-danger" onClick = {() => removePayout(row.id)}
+                                    style = {{marginLeft:"1px"}}> Delete</button>,
+            ignoreRowClick: true,
+            allowOverflow: true,
+            button: true,
+		}
 	]
-
+	
 	const customStyles = {
 		headCells: {
 			style: {
@@ -67,59 +147,33 @@ const PayoutAddAndUpdate = () => {
 			},
 		},
 	}
-	useEffect(() => {
-		const fetchData = async () => {
-			axios.get(url)
-				.then(res => {
-					setRecords(res.data)
-					setFilterRecords(res.data)
-				})
-				.catch(err => console.log(err));
-		}
-		fetchData();
-	}, []);
-
-	const handleFilter = (event) => {
-		const newData = filterRecords.filter(row => row.expenseName.toLowerCase().includes(event.target.value.toLowerCase()))
-		setRecords(newData);
-	}
-	/*const handleDelete = (event) => {
-		const newData = deleteRecords.filter((row) => row.schemename !== event)
-		setRecords(newData);
-	}
-	const handleUpdate = (event) => {
-		const newData = deleteRecords.filter(row => row.expenseName.toLowerCase().includes(event.target.value.toLowerCase()))
-		setRecords(newData);
-	}*/
-
+	
 	return (
 		<div>
+		<div><Link tag="a" className="" to="/dashboardpage"><HomeIcon />
+				<i className="fa fa-dashboard"></i> Home
+			</Link></div>
 			<div>
-				<Link to="/DashboardPage">
-					<img alt="Alt content"/><h1>Home</h1>
-				</Link>
 				<div>
-					<center><h1>Payout Details</h1></center>
+					<center><h1>Add/Update Payout</h1></center>
 				</div>
 			</div>
+			<div>
+			<button className = "btn btn-primary mb-2" onClick={addNewPayout }>Add Payout</button>
+			</div>
 			<div style={{ padding: "10px 20px", justifyContent: 'left' }} >
-				<div style={{ display: 'flex', justifyContent: 'right' }}>
-					<input type="text" placeholder='Search....' onChange={handleFilter} style={{ padding: '6px 10px' }} />
-				</div>
 				<DataTable
 					columns={column}
-
 					customStyles={customStyles}
-					data={records}
+					data={payout}
 					pagination
-					selectableRows
-					selecttabselectableRowsHighlight
-					highlightOnHover
-					/*actions = {<button className ='btn btn-sm btm-info' > Export </button>} */
-					>
+					selectableRows>
 				</DataTable>
 			</div>
 		</div >
 	);
+
+   
 }
-export default PayoutAddAndUpdate; 
+
+export default PayoutAddAndUpdate

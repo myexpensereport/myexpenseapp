@@ -37,7 +37,7 @@ class Sidebar extends React.Component {
                         </Link>
                     </li>
                     <li className="mb-1">
-                        <Link tag="a" className="" to="/PayoutList">
+                        <Link tag="a" className="" to="/PayoutAddAndUpdate">
                             <i className="fa fa-file-o"></i>Payout Add/Update
                         </Link>
                     </li>
