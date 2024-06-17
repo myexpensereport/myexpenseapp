@@ -17,12 +17,19 @@ import WeekelyExpense from './transanctionhistory/WeekelyExpense';
 import MonthlyExpense from './transanctionhistory/MonthlyExpense';
 import AnnualExpense from './transanctionhistory/AnnualExpense';
 import TotalExpense from './transanctionhistory/TotalExpense';
-import Payout from './payout/Payout';
-import PayoutAddAndUpdate from './payout/PayoutAddAndUpdate';
-import PayoutComponent from './payout/PayoutComponent';
 
 import DashBoardChart from './common/DashBoardChart';
 import AddExpenses from './addexpenses/AddExpenses';
+
+
+import PayoutHome from './payout/PayoutHome';
+
+import PayoutDashboard from './payout/PayoutDashboard';
+import PayoutUpdate from './payout/PayoutUpdate';
+import PayoutCreate from './payout/PayoutCreate';
+import PayoutView from './payout/PayoutView';
+
+
 
 
 import {
@@ -77,10 +84,14 @@ function App() {
                 <Route exact path='/MonthlyExpense' element={<MonthlyExpense/>} />
                 <Route exact path='/AnnualExpense' element={<AnnualExpense/>} />
                 <Route exact path='/TotalExpense' element={<TotalExpense/>} />
-                <Route exact path='/Payout' element={<Payout/>} />
-                <Route exact path='/PayoutAddAndUpdate' element={<PayoutAddAndUpdate/>} />
-                <Route exact path='/PayoutComponent' element={<PayoutComponent/>} />
-                <Route exact path='/PayoutComponent/:id' element={<PayoutComponent/>} />
+                
+                <Route exact path='/PayoutDashboard' element={<PayoutDashboard/>} />
+                <Route exact path='/PayoutHome' element={<PayoutHome/>} />
+                <Route exact path='/PayoutCreate' element={<PayoutCreate/>} />
+                <Route exact path='/PayoutUpdate/:id' element={<PayoutUpdate/>} />
+                 <Route exact path='/PayoutView/:id' element={<PayoutView/>} />
+                
+                
                 
 				</Routes>
 			</Router>

@@ -19,13 +19,16 @@ const column = [
 		name : "Expense Name",
 		selector :row =>row.expenseName,
 		sortable :true,
-		
+	},
+	{
 		
 	},
 	{
 		name : "Category",
 		selector :row =>row.category,
 		sortable :true
+	},
+	{
 	},
 	{
 		name : "Amount",
@@ -36,7 +39,8 @@ const column = [
 		name : "Created",
 		selector :row =>row.created,
 		sortable :true
-	}
+	},
+	
 ]  
 
 const customStyles = {

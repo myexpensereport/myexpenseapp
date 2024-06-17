@@ -180,7 +180,6 @@ const DashboardPage = () => {
 				</div>
 			</div>
 
-
 			<div className="col-xl-4 col-sm-7 mb-4">
 				<div className="card text-white bg-success o-hidden h-100">
 					<div className="card-body">
@@ -197,6 +196,7 @@ const DashboardPage = () => {
 					</a>
 				</div>
 			</div>
+			
 		</div>
 	</>
 }

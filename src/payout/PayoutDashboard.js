@@ -8,7 +8,7 @@ import HomeIcon from '../common/HomeIcon';
 
 import { CSVLink } from "react-csv";
 
-const Payout = () => {
+const PayoutDashboard = () => {
 
 	const url = 'http://localhost:8888/payout/getAllPayout'
 	const [records, setRecords] = useState([]);
@@ -41,24 +41,10 @@ const Payout = () => {
 			selector: row => (row.interstAmount + row.bonus),
 			sortable: true
 		},
-		{
-			name: "Start Date",
-			selector: row => row.startDate,
-			sortable: true
-		},
-		{
-			name: "End Date",
-			selector: row => row.endDate,
-			sortable: true
-		},
+		
 		{
 			name: "Tenure",
 			selector: row => row.tenure,
-			sortable: true
-		},
-		{
-			name: "Return Earn Date",
-			selector: row => row.returnEarnedDate,
 			sortable: true
 		},
 		{
@@ -83,10 +69,25 @@ const Payout = () => {
 			sortable: true
 		},
 		{
+			name: "Start Date",
+			selector: row => row.startDate,
+			sortable: true
+		},
+		{
+			name: "End Date",
+			selector: row => row.endDate,
+			sortable: true
+		},
+			{
+			name: "Return Earn Date",
+			selector: row => row.returnEarnedDate,
+			sortable: true
+		},
+		{
 			name: "Status",
 			selector: row => row.status,
 			sortable: true
-		}
+		},
 	]
 
 	const customStyles = {
@@ -144,13 +145,10 @@ const Payout = () => {
 		<div>
 			<div><Link tag="a" className="" to="/dashboardpage"><HomeIcon />
 				<i className="fa fa-dashboard"></i> Home
-			</Link></div>
-			<div class="bg-success text-white"><b><center> Total InvestedAmount = {getTotalInvestAmount()} | Total ReturnedAmount = {getReturnedAmount()}</center></b></div>
-			<div>
-				<div>
-					<center><h1>Payout Details</h1></center>
-				</div>
+			</Link>
+			<h5><center>Payout Dashboard</center> </h5>
 			</div>
+			<div class="bg-success text-white"><b><center> Total InvestedAmount = {getTotalInvestAmount()} | Total ReturnedAmount = {getReturnedAmount()}</center></b></div>
 			<div>
 				<PayoutBarChart />
 			</div>
@@ -180,4 +178,4 @@ const Payout = () => {
 		</div >
 	);
 }
-export default Payout;
+export default PayoutDashboard;
