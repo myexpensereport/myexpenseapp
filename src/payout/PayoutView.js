@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import {useNavigate, Link, useParams } from 'react-router-dom';
+import Header from './../common/header';
 
 
 
@@ -26,7 +27,8 @@ const PayoutView = () => {
 	
 	return (
 		<div className = 'container'>
-		<h2>Payout Deatils</h2>
+		<Header />
+		<h2><center>Payout Deatils</center></h2>
 		<table className='table'>
 		 	<thead> 
 		 	<tr>

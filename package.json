@@ -42,6 +42,7 @@
     "react-preloader-icon": "^1.0.0",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
+    "react-sf-building-blocks": "^1.0.87",
     "react-to-pdf": "^1.0.1",
     "reactstrap": "^9.2.2",
     "web-vitals": "^2.1.4"

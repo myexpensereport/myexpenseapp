@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import {useNavigate, Link } from 'react-router-dom';
-import HomeIcon from '../common/HomeIcon';
-
+import Header from './../common/header';
 import { makeStyles } from "@material-ui/core";
 
 
@@ -50,9 +49,7 @@ const PayouCreate = () => {
 	
 	return (
 		<div>
-		<div><Link tag="a" className="" to="/dashboardpage"><HomeIcon />
-				<i className="fa fa-dashboard"></i> Home
-			</Link>
+		<div><Header />
 			<h5><center>Payout Create</center> </h5>
 			</div>
 			

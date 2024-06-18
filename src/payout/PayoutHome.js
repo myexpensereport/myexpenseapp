@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { Link ,useNavigate} from 'react-router-dom';
-import HomeIcon from '../common/HomeIcon';
-
+import Header from './../common/header';
 
 const PayoutHome = () => {
 
@@ -37,9 +36,7 @@ const PayoutHome = () => {
 
 	return (
 		<div className = 'container'>
-		<div><Link tag="a" className="" to="/dashboardpage"><HomeIcon />
-				<i className="fa fa-dashboard"></i> Home
-			</Link></div>
+		<Header />
 		<Link to ='/PayoutCreate' className='btn btn-success my-3'>Create+</Link>
 		<table className='table'>
 		 	<thead> 

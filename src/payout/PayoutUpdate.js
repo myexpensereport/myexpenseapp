@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import {useNavigate, useParams } from 'react-router-dom';
-
-
-
+import Header from './../common/header';
 
 
 
@@ -51,6 +49,8 @@ const PayouUpdate = () => {
 	
 	
 	return (
+		<div><Header />
+		<h2><center>Payout Update</center></h2>
 		<div className='d-flex w-90 vh-90 justify-content-center align-items-center'>
 			<div className='w-50 border bg-secondary text-white p-5'>
 				<form onSubmit={handleSubmit}>
@@ -128,7 +128,7 @@ const PayouUpdate = () => {
 				</form>
 
 			</div>
-
+</div>
 		</div>
 	);
 }

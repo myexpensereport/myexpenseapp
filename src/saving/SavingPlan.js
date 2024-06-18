@@ -6,6 +6,7 @@ import axios from 'axios';
 import DataTable from 'react-data-table-component';
 import { Link } from 'react-router-dom';
 import HomeIcon from '../common/HomeIcon';
+import Header from './../common/header';
 
 const SavinPlan = () => {
 
@@ -89,9 +90,7 @@ const SavinPlan = () => {
 	return (
 		<div>
 		<div>
-		<div><Link tag="a" className="" to="/dashboardpage"><HomeIcon />
-				<i className="fa fa-dashboard"></i> Home
-			</Link></div>
+		<Header />
 				<div>
 					<center><h1>SavingPlan Details</h1></center>
 				</div>

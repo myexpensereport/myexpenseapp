@@ -4,7 +4,7 @@ import axios from 'axios';
 import DataTable from 'react-data-table-component';
 import { Link } from 'react-router-dom';
 import PayoutBarChart from '../common/PayoutBarChart';
-import HomeIcon from '../common/HomeIcon';
+import Header from './../common/header';
 
 import { CSVLink } from "react-csv";
 
@@ -143,9 +143,7 @@ const PayoutDashboard = () => {
 
 	return (
 		<div>
-			<div><Link tag="a" className="" to="/dashboardpage"><HomeIcon />
-				<i className="fa fa-dashboard"></i> Home
-			</Link>
+			<div><Header />
 			<h5><center>Payout Dashboard</center> </h5>
 			</div>
 			<div class="bg-success text-white"><b><center> Total InvestedAmount = {getTotalInvestAmount()} | Total ReturnedAmount = {getReturnedAmount()}</center></b></div>

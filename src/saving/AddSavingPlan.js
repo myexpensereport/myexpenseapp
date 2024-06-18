@@ -9,7 +9,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import SavingPlan from '../saving/SavingPlan';
 import HomeIcon from '../common/HomeIcon';
-
+import Header from './../common/header';
 
 const AddSavingPlan = () => {
 	const [schemeName, setSchemeName] = useState('');
@@ -42,9 +42,7 @@ const AddSavingPlan = () => {
 
 	return (
 			<div>
-			<div><Link tag="a" className="" to="/dashboardpage"><HomeIcon />
-				<i className="fa fa-dashboard"></i> Home
-			</Link></div>
+			<Header />
 		<div className="container mt-5">
 			<div className="row justify-content-center">
 				<div className="col-md-6">

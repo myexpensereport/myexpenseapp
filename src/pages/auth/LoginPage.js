@@ -16,10 +16,10 @@ const LoginPage = () =>{
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await AuthService.login({name,email});
+            const response = await AuthService.login({name,email,password});
             setMessage(response.data);
              const userData = {name,
-            email,
+            email,password
         };
             localStorage.setItem(
             "token-info",

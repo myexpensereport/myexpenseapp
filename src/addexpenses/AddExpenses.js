@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import AuthService from '../authservice/AuthService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HomeIcon from '../common/HomeIcon';
+import Header from './../common/header';
 
 const AddExpenses = () => {
 	const [expenseName, setExpenseName] = useState('');
@@ -28,9 +29,8 @@ const AddExpenses = () => {
 
 	return (
 		<div>
-			<div><Link tag="a" className="" to="/dashboardpage"><HomeIcon />
-				<i className="fa fa-dashboard"></i> Home
-			</Link></div>
+			
+			 <Header />
 			<div className="container mt-5">
 				<div className="row justify-content-center">
 					<div className="col-md-6">
