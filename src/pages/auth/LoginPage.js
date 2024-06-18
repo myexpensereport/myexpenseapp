@@ -7,6 +7,7 @@ import {useNavigate} from "react-router-dom";
 
 const LoginPage = () =>{
 	
+	const [name, setName] = useState('');
      const [email, setEmail] = useState('');
      const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
@@ -15,8 +16,17 @@ const LoginPage = () =>{
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await AuthService.login({email , password});
+            const response = await AuthService.login({name,email});
             setMessage(response.data);
+             const userData = {name,
+            email,
+        };
+            localStorage.setItem(
+            "token-info",
+            JSON.stringify(userData)
+        );
+        setEmail("");
+        setPassword("");
             if (response.data === 'Login successful') {
                 navigate('/DashboardPage');
             }
@@ -39,6 +49,12 @@ const LoginPage = () =>{
             <form className="login-form" onSubmit={handleLogin}>
                 <div className="d-flex align-items-center my-4">
                     <h1 className="text-center fw-normal mb-0 me-3">Sign In</h1>
+                </div>
+                 <div className="form-outline mb-4">
+                    <label className="form-label" htmlFor="form3Example3">Useer Name</label>
+                    <input type="text" id="form3Example3" className="form-control form-control-lg"
+                    placeholder="Enter a user name" value={name}
+                                        onChange={(e) => setName(e.target.value)}/>
                 </div>
                 {/* <!-- Email input --> */}
                 <div className="form-outline mb-4">

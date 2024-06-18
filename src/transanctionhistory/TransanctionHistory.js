@@ -21,9 +21,6 @@ const column = [
 		sortable :true,
 	},
 	{
-		
-	},
-	{
 		name : "Category",
 		selector :row =>row.category,
 		sortable :true
