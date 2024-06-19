@@ -16,6 +16,8 @@ const PayoutDashboard = () => {
 
 	const [totalInvestAmount, setTotalInvestAmount] = useState([]);
 	const [totalReturnAmount, setTotalReturnAmount] = useState([]);
+	const [totalRedeemAmount, setTotalRedeemAmount] = useState([]);
+	const [totalBalanceInvestAmount, setTotalBalanceInvestAmount] = useState([]);
 
 	const [csvData, setCsvData] = useState([]);
 
@@ -37,6 +39,11 @@ const PayoutDashboard = () => {
 			sortable: true
 		},
 		{
+			name: "Interst Amount",
+			selector: row => row.interstAmount,
+			sortable: true
+		},
+		{
 			name: "Total Return",
 			selector: row => (row.interstAmount + row.bonus),
 			sortable: true
@@ -47,11 +54,7 @@ const PayoutDashboard = () => {
 			selector: row => row.tenure,
 			sortable: true
 		},
-		{
-			name: "Interst Amount",
-			selector: row => row.interstAmount,
-			sortable: true
-		},
+		
 		{
 			name: "Bonus",
 			selector: row => row.bonus,
@@ -113,6 +116,8 @@ const PayoutDashboard = () => {
 					setFilterRecords(res.data)
 					setTotalInvestAmount(res.data)
 					setTotalReturnAmount(res.data)
+					setTotalRedeemAmount(res.data)
+					setTotalBalanceInvestAmount(res.data)
 					setCsvData(res.data)
 				})
 				.catch(err => console.log(err));
@@ -128,7 +133,7 @@ const PayoutDashboard = () => {
 	function getTotalInvestAmount() {
 		let t = 0;
 		const res = totalInvestAmount.map(({ investAmount }) => t = t + investAmount);
-		console.log("res::::" + res);
+		console.log("totalInvestAmount::::" + res);
 		return t;
 	}
 	function getReturnedAmount() {
@@ -136,7 +141,19 @@ const PayoutDashboard = () => {
 		const res = totalReturnAmount.map(({ interstAmount }) => t = t + interstAmount);
 		console.log("res::::" + res);
 		const finalRes = totalReturnAmount.map(({ bonus }) => t = t + bonus);
-		console.log("finalRes::::" + finalRes);
+		console.log("getReturnedAmount::::" + finalRes);
+		return t;
+	}
+	function getTotalReedemAmount() {
+		let t = 0;
+		const res = totalRedeemAmount.map(({ redeem }) => t = t + redeem);
+		console.log("redeem::::" + res);
+		return t;
+	}
+	function getTotalBalanceInvestAmount() {
+		let t = 0;
+		const res = totalBalanceInvestAmount.map(({ balanceFund }) => t = t + balanceFund);
+		console.log("balanceFund::::" + res);
 		return t;
 	}
 
@@ -146,7 +163,7 @@ const PayoutDashboard = () => {
 			<div><Header />
 			<h5><center>Payout Dashboard</center> </h5>
 			</div>
-			<div class="bg-success text-white"><b><center> Total InvestedAmount = {getTotalInvestAmount()} | Total ReturnedAmount = {getReturnedAmount()}</center></b></div>
+			<div class="bg-success text-white"><b><center> Total InvestedAmount = {getTotalInvestAmount()} | Total RedeemedAmount = {getTotalReedemAmount()} | Total Balance InvestedAmount = {getTotalBalanceInvestAmount()}|| Total ReturnedAmount = {getReturnedAmount()}</center></b></div>
 			<div>
 				<PayoutBarChart />
 			</div>
