@@ -1,6 +1,4 @@
 import React, { useState,useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import AuthService from '../authservice/AuthService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import DataTable from 'react-data-table-component';
@@ -77,7 +75,7 @@ const customStyles = {
             <div style={{display:'flex', justifyContent : 'right'}}>
             <input type = "text" placeholder='Search....' onChange = {handleFilter} style={{padding:'6px 10px'}}/>
             <div class="bg-danger text-white">
-						<CSVLink className="downloadbtn" filename="trsanctionhistory.csv" data={csvData}>
+						<CSVLink className="downloadbtn" filename="TrsanctionHistory.csv" data={csvData}>
 							Export to CSV
 						</CSVLink>
 					</div> 

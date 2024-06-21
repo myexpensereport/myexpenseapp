@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import AuthService from '../authservice/AuthService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import DataTable from 'react-data-table-component';
 import HomeIcon from './../common/HomeIcon';
 import { Link } from 'react-router-dom';
 import { CSVLink } from "react-csv";
+import Header from './../common/header';
 
 const DailyExpense = () => {
 
@@ -92,9 +91,7 @@ const DailyExpense = () => {
 
 	return (
 		<div>
-			<div><Link tag="a" className="" to="/dashboardpage"><HomeIcon />
-				<i className="fa fa-dashboard"></i> Home
-			</Link></div>
+			<Header />
 			<div class="p-4 mb-2 bg-success text-white"><b><center> Total Daily Expense : {findSumUsingMap()}</center></b></div>
 			<div style={{ padding: "10px 20px", justifyContent: 'left' }} >
 				<div style={{ display: 'flex', justifyContent: 'right' }}>

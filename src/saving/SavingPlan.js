@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import AuthService from '../authservice/AuthService';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import DataTable from 'react-data-table-component';
-import { Link } from 'react-router-dom';
-import HomeIcon from '../common/HomeIcon';
 import Header from './../common/header';
+import { CSVLink } from "react-csv";
 
 const SavinPlan = () => {
 
 	const url = 'http://localhost:8888/myexpense/getAllSavingPlan'
 	const [records, setRecords] = useState([]);
 	const [filterRecords, setFilterRecords] = useState([]);
+
+
+	const [totalInvestAmount, setTotalInvestAmount] = useState([]);
+	const [totalInterestAmount, setTotalInterestAmount] = useState([]);
+	const [csvData, setCsvData] = useState([]);
 
 
 	const column = [
@@ -30,7 +33,7 @@ const SavinPlan = () => {
 		},
 		{
 			name: "Interest Amount",
-			selector: row => row.intrestAmount,
+			selector: row => row.interestAmount,
 			sortable: true
 		},
 		{
@@ -41,11 +44,6 @@ const SavinPlan = () => {
 		{
 			name: "End Date",
 			selector: row => row.endDate,
-			sortable: true
-		},
-		{
-			name: "Tenure",
-			selector: row => row.tenner,
 			sortable: true
 		},
 		{
@@ -76,6 +74,9 @@ const SavinPlan = () => {
 				.then(res => {
 					setRecords(res.data)
 					setFilterRecords(res.data)
+					setTotalInvestAmount(res.data)
+					setTotalInterestAmount(res.data)
+					setCsvData(res.data)
 				})
 				.catch(err => console.log(err));
 		}
@@ -86,20 +87,36 @@ const SavinPlan = () => {
 		const newData = filterRecords.filter(row => row.expenseName.toLowerCase().includes(event.target.value.toLowerCase()))
 		setRecords(newData);
 	}
+	
+	function getTotalInvestAmount() {
+		let t = 0;
+		const res = totalInvestAmount.map(({ investAmount }) => t = t + investAmount);
+		return t;
+	}
+	function getTotalInterestAmount() {
+		let t = 0;
+		const res = totalInterestAmount.map(({ interestAmount }) => t = t + interestAmount);
+		return t;
+	}
 
 	return (
 		<div>
-		<div>
 		<Header />
 				<div>
-					<center><h1>SavingPlan Details</h1></center>
+					<center><h1 class="text-primary">SavingPlan Details</h1></center>
 				</div>
-			</div>
+				<div class="bg-success text-white"><b><center> Total InvestedAmount = {getTotalInvestAmount()} | Total InterestAmount = {getTotalInterestAmount()}</center></b></div>
 			
 			<div style={{ padding: "10px 20px", justifyContent: 'left' }} >
 				<div style={{ display: 'flex', justifyContent: 'right' }}>
 					<input type="text" placeholder='Search....' onChange={handleFilter} style={{ padding: '6px 10px' }} />
-				</div>
+				
+				 <div class="bg-danger text-white">
+						<CSVLink className="downloadbtn" filename="SavingPlan.csv" data={csvData}>
+							Export to CSV
+						</CSVLink>
+					</div>
+					</div> 
 				<DataTable
 					columns={column}
 

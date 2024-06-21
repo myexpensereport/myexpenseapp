@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import DataTable from 'react-data-table-component';
-import { Link } from 'react-router-dom';
 import PayoutBarChart from '../common/PayoutBarChart';
 import Header from './../common/header';
 
@@ -176,7 +175,7 @@ const PayoutDashboard = () => {
 					<input type="text" placeholder='Search....' onChange={handleFilter} style={{ padding: '6px 10px' }} />
 					{/* Export Button Start */}
 					<div class="bg-danger text-white">
-						<CSVLink className="downloadbtn" filename="payout.csv" data={csvData}>
+						<CSVLink className="downloadbtn" filename="Payout.csv" data={csvData}>
 							Export to CSV
 						</CSVLink>
 					</div>

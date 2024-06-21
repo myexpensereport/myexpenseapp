@@ -11,6 +11,7 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { NavDropdown } from "react-bootstrap";
 import HomeIcon from '../common/HomeIcon';
+import Logo from '../assets/images/logo1_test.png';
 
 function Header() {
 	const getUserName = () => {
@@ -27,11 +28,10 @@ function Header() {
 	return (
 
 		<Navbar className="bg-body-tertiary">
+		<Link tag="a" className="" to="/dashboardpage">
+			  <img src={Logo} alt='logo' />
+              <h1>MyDashboard</h1> </Link> 
 			<Container>
-			<Link tag="a" className="" to="/dashboardpage"><HomeIcon />
-				<i className="fa fa-dashboard"></i> Home
-			</Link>
-  			<h6 style={{ textAlign: "center" }}>My Expense App</h6>
 				<Navbar.Collapse className="justify-content-end">
 				<NavDropdown title = {getUserName()}>
 				<NavDropdown.Item onClickCapture={logout}>Logout User

@@ -39,7 +39,6 @@ const adminLayout = (ChildComponent) => {
                 <Sidebar/>
                 {/* <!-- Page content wrapper--> */}
                 <div className="main" id="page-content-wrapper">
-                <Header />
                     {/* <!-- Top navigation--> */}
                     {/* <!-- Page content--> */}
                     <div >

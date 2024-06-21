@@ -7,14 +7,12 @@ import dayjs from 'dayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import SavingPlan from '../saving/SavingPlan';
-import HomeIcon from '../common/HomeIcon';
 import Header from './../common/header';
 
 const AddSavingPlan = () => {
 	const [schemeName, setSchemeName] = useState('');
 	const [investAmount, setInvestAmount] = useState(0);
-	const [intrestAmount, setIntrestAmount] = useState(0);
+	const [interestAmount, setTnterestAmount] = useState(0);
 	const [message, setMessage] = useState('');
 	const navigate = useNavigate();
 
@@ -28,7 +26,7 @@ const AddSavingPlan = () => {
 			console.log(investAmount);
 			console.log(startDate);
 			console.log(endDate);
-			const response = await AuthService.addSavingPlan({ schemeName, investAmount,intrestAmount, startDate, endDate });
+			const response = await AuthService.addSavingPlan({ schemeName, investAmount,interestAmount, startDate, endDate });
 			setMessage(response.data);
 			if (response.data === 'SavingPlan Add Successfully') {
 				navigate('/SavingPlan');
@@ -47,13 +45,13 @@ const AddSavingPlan = () => {
 			<div className="row justify-content-center">
 				<div className="col-md-6">
 					<div className="card">
-						<div className="card-header">Add Your SavingPlan</div>
+					<div className="card-header" class="text-primary"><h5>Add Your SavingPlan</h5></div>
 						<div className="card-body">
 							{message && <div className="alert alert-info">{message}</div>}
 							<form onSubmit={handleRegister} style={{ display: "flex", alignItems: "center", marginTop: 20 }}>
 								<div>
 									<div className="form-group">
-										<label>Scheme Name</label>
+										<label>Scheme Name:</label>
 										<input
 											type="text"
 											className="form-control"
@@ -62,7 +60,7 @@ const AddSavingPlan = () => {
 										/>
 									</div>
 									<div className="form-group">
-										<label>Invest Amount </label>
+										<label>Invest Amount:</label>
 										<input
 											type="text"
 											className="form-control"
@@ -71,18 +69,18 @@ const AddSavingPlan = () => {
 										/>
 									</div>
 									<div className="form-group">
-										<label>Intrest Amount </label>
+										<label>Interest Amount:</label>
 										<input
 											type="text"
 											className="form-control"
-											value={intrestAmount}
-											onChange={(e) => setIntrestAmount(e.target.value)}
+											value={interestAmount}
+											onChange={(e) => setTnterestAmount(e.target.value)}
 										/>
 									</div>
 									<LocalizationProvider dateAdapter={AdapterDayjs}>
 										<DemoContainer components={['DatePicker', 'DatePicker']}>
+										<label>Start Date:</label>
 											<DatePicker
-												label="Controlled picker"
 												value={startDate}
 												onChange={(newValue) => setStartDate(newValue)}
 											/>
@@ -91,16 +89,15 @@ const AddSavingPlan = () => {
 
 									<LocalizationProvider dateAdapter={AdapterDayjs}>
 										<DemoContainer components={['DatePicker', 'DatePicker']}>
+										<label>End Date :</label>
 											<DatePicker
-												label="Controlled picker"
 												value={endDate}
 												onChange={(newValue) => setEndDate(newValue)}
 											/>
 										</DemoContainer>
 									</LocalizationProvider>
-									
-
 									<button type="submit" className="btn btn-primary">Add SavingPlan</button>
+									<Link   to={'/DashboardPage'} className='btn btn-danger'>Cancel</Link>
 								</div>
 							</form>
 						</div>

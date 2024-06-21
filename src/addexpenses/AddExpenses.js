@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate ,Link} from 'react-router-dom';
 import AuthService from '../authservice/AuthService';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import HomeIcon from '../common/HomeIcon';
 import Header from './../common/header';
 
 const AddExpenses = () => {
@@ -29,13 +28,14 @@ const AddExpenses = () => {
 
 	return (
 		<div>
-			
 			 <Header />
+			 
 			<div className="container mt-5">
 				<div className="row justify-content-center">
 					<div className="col-md-6">
 						<div className="card">
-							<div className="card-header">Add Your Expenses</div>
+						
+							<div className="card-header" class="text-primary"><h5>Add Your Expenses</h5></div>
 							<div className="card-body">
 								{message && <div className="alert alert-info">{message}</div>}
 								<form onSubmit={handleRegister} style={{ display: "flex", alignItems: "center", marginTop: 20 }}>
@@ -82,6 +82,7 @@ const AddExpenses = () => {
 											/>
 										</div>
 										<button type="submit" className="btn btn-primary">Add Expense</button>
+										<Link   to={'/DashboardPage'} className='btn btn-danger'>Cancel</Link>
 									</div>
 								</form>
 							</div>

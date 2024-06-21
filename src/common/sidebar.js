@@ -2,6 +2,8 @@ import React from "react";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import { Link } from 'react-router-dom';
+import HomeIcon from '../common/HomeIcon';
+import Logo from '../assets/images/logo1_test.png';
 
 class Sidebar extends React.Component {
     constructor(props){
@@ -12,14 +14,11 @@ class Sidebar extends React.Component {
 
     render(){
         return <div className="border-end sidenav" id="sidebar-wrapper">
-            <PerfectScrollbar className="sidebar-items">
-                <ul className="list-unstyled ps-0">
-                <li className="mb-1">
-                    </li>
-                    <li className="mb-1">
-                        <Link tag="a" className="" to="/dashboardpage">
-                            <i className="fa fa-dashboard"></i>Expense Dashboard
-                        </Link>
+        <Link tag="a" className="" to="/dashboardpage">
+			  <img src={Logo} alt='logo' />
+              <h1>MyDashboard</h1> </Link> 
+                <ul className="list-unstyled">
+                <li className="mb-2">
                     </li>
                     <li className="mb-1">
                         <Link tag="a" className="" to="/addexpenses">
@@ -50,7 +49,6 @@ class Sidebar extends React.Component {
                    
                 </ul>
              
-            </PerfectScrollbar>
               
             
         </div>

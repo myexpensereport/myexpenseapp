@@ -3,6 +3,12 @@ import adminLayout from "../hoc/adminLayout"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
+import {useNavigate,Link} from "react-router-dom";
+import '../assets/css/header.css';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import { NavDropdown } from "react-bootstrap";
+import Logo from '../assets/images/logo1_test.png';
 const DashboardPage = () => {
 
 	const dailyurl = 'http://localhost:8888/myexpense/getAllExpensesReport/daily';
@@ -111,9 +117,31 @@ const DashboardPage = () => {
 		return t;
 	}
 
+const getUserName = () => {
+		const name = localStorage.getItem("token-info");
+		const initialValue = JSON.parse(name);
+		return "Hello "+initialValue.name;
 
+	};
+ const navigate = useNavigate();
+	const logout = () => {
+		localStorage.removeItem("token-info");
+		 navigate('/');
+	};
 
 	return <>
+	
+	<Navbar className="bg-body-tertiary">
+			<Container>
+			<h5><center>My Expense App</center></h5>
+				<Navbar.Collapse className="justify-content-end">
+				<NavDropdown title = {getUserName()}>
+				<NavDropdown.Item onClickCapture={logout}>Logout User
+                        </NavDropdown.Item>
+				</NavDropdown>				
+				</Navbar.Collapse>
+			</Container>
+		</Navbar>
 		<div className="row">
 			<div className="col-xl-4 col-sm-7 mb-4">
 				<div className="card text-white bg-primary o-hidden h-100">
