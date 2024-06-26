@@ -9,7 +9,7 @@ import { CSVLink } from "react-csv";
 
 const PayoutDashboard = () => {
 
-	const url = 'http://localhost:8888/payout/getAllPayout'
+	const url = 'http://localhost:8888/payout/getAllPayoutTest'
 	const [records, setRecords] = useState([]);
 	const [filterRecords, setFilterRecords] = useState([]);
 
@@ -90,6 +90,12 @@ const PayoutDashboard = () => {
 			selector: row => row.status,
 			sortable: true
 		},
+		{
+			name: "TransactionHistoryTests",
+			selector: row => row.transactionHistoryTests.schemeName,
+			sortable: true
+		},
+
 	]
 
 	const customStyles = {
@@ -110,7 +116,7 @@ const PayoutDashboard = () => {
 		const fetchData = async () => {
 			axios.get(url)
 				.then(res => {
-					console.log(res.data)
+					console.log("reponse data is ::",res.data)
 					setRecords(res.data)
 					setFilterRecords(res.data)
 					setTotalInvestAmount(res.data)

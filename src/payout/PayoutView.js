@@ -15,14 +15,26 @@ const PayoutView = () => {
 	
 	const [data, setData] = useState([]);
 	
-	useEffect(() => {
+	console.log("data is::"+data.schemeName)
+	
+	/*useEffect(() => {
+		const fetchData = async () => {
+			axios.get('http://localhost:8888/payout/history/'+id)
+				.then(res => {
+					setData(res.data)
+					
+				})
+				.catch(err => console.log(err));
+		}
+		fetchData();
+	}, []);*/
+		useEffect(() => {
 		console.log("GetbyID is ::"+id)
-		axios.get('http://localhost:8888/payout/'+id)
+		axios.get('http://localhost:8888/payout/history/'+id)
 		.then(res => setData(res.data))
 		.catch(err => console.log(err))
-		console.log("updateData::"+setData)
+		console.log("updateData::"+data.schemeName)
 	},[])
-	
 	
 	
 	return (
@@ -33,34 +45,22 @@ const PayoutView = () => {
 		 	<thead> 
 		 	<tr>
 		 	<th>SchemeName</th>
-		 	<th>Invest Amount</th>
-		 	<th>Expected Amount</th>
-		 	<th>Tenure</th>
-		 	<th>Interst Amount</th>
-		 	<th>Reedem</th>
-		 	<th>Bonus</th>
-		 	<th>Total Returned</th>
-		 	<th>Balance Fund</th>
-		 	<th>Start Date</th>
-		 	<th>End Date</th>
-		 	<th>Return Earn Date</th>
+		 	<th>InvestAmount</th>
+		 	<th>ExpectedAmount</th>
+		 	<th>UpdatedDate</th>
 		 	</tr>
 		 	</thead>
 		 	
 		 	<tbody>
-				 <td> {data.schemeName}</td>
-				 <td> {data.investAmount}</td>
-				 <td> {data.expectedAmount}</td>
-				 <td> {data.tenure}</td>
-				 <td> {data.interstAmount}</td>
-				 <td> {data.redeem}</td>
-				 <td> {data.bonus}</td>
-				 <td> {data.totalEarned}</td>
-				 <td> {data.balanceFund}</td>
-				 <td> {data.startDate}</td>
-				 <td> {data.endDate}</td>
-				 <td> {data.returnEarnedDate}</td>
+		 	{data.map((d,i) =>(
+				 <tr key ={i}>
+				 <td> {d.schemeName}</td>
+				 <td> {d.investAmount}</td>
+				 <td> {d.expectedAmount}</td>
+				 <td> {d.updatedDate}</td>
+				 </tr>
 				 
+			 ))}
 		 	</tbody>
 		 	 <div> 
 				 <Link   to={'/PayoutHome'} className='btn btn-success'>Back</Link>

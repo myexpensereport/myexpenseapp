@@ -7,7 +7,7 @@ import Header from './../common/header';
 
 const PayoutHome = () => {
 
-	const url = 'http://localhost:8888/payout/getAllPayout'
+	const url = 'http://localhost:8888/payout/getAllPayoutTest'
 	const [data, setData] = useState([]);
 
 
@@ -62,7 +62,7 @@ const PayoutHome = () => {
 		 	{data.map((d,i) =>(
 				 <tr key ={i}>
 				 <td> {d.id}</td>
-				 <td> {d.schemeName}</td>
+				 <td><Link   to={'/PayoutView/'+d.id} className='text-decoration-none btn bt-sm btn-success'>{d.schemeName}</Link></td>
 				 <td> {d.investAmount}</td>
 				 <td> {d.expectedAmount}</td>
 				 <td> {d.tenure}</td>
@@ -74,7 +74,6 @@ const PayoutHome = () => {
 				 <td> {d.startDate}</td>
 				 <td> {d.endDate}</td>
 				 <td> {d.returnEarnedDate}</td>
-				 
 				 <td> 
 				 <Link   to={'/PayoutUpdate/'+d.id} className='text-decoration-none btn bt-sm btn-success'>Update</Link>
 				 <button className='text-decoration-none btn bt-sm btn-danger' onClick={e => handleDelete(d.id)}>Delete</button>
