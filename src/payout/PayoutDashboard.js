@@ -9,7 +9,7 @@ import { CSVLink } from "react-csv";
 
 const PayoutDashboard = () => {
 
-	const url = 'http://localhost:8888/payout/getAllPayoutTest'
+	const url = 'http://localhost:8888/payout/getAllPayout'
 	const [records, setRecords] = useState([]);
 	const [filterRecords, setFilterRecords] = useState([]);
 
@@ -89,12 +89,7 @@ const PayoutDashboard = () => {
 			name: "Status",
 			selector: row => row.status,
 			sortable: true
-		},
-		{
-			name: "TransactionHistoryTests",
-			selector: row => row.transactionHistoryTests.schemeName,
-			sortable: true
-		},
+		}
 
 	]
 

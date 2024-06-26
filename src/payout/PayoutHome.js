@@ -7,7 +7,7 @@ import Header from './../common/header';
 
 const PayoutHome = () => {
 
-	const url = 'http://localhost:8888/payout/getAllPayoutTest'
+	const url = 'http://localhost:8888/payout/getAllPayout'
 	const [data, setData] = useState([]);
 
 
