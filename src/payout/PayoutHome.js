@@ -62,7 +62,7 @@ const PayoutHome = () => {
 		 	{data.map((d,i) =>(
 				 <tr key ={i}>
 				 <td> {d.id}</td>
-				 <td><Link   to={'/PayoutView/'+d.id} className='text-decoration-none btn bt-sm btn-success'>{d.schemeName}</Link></td>
+				 <td><Link   to={'/PayoutView/'+d.id} class="text-decoration-underline text-primary">{d.schemeName}</Link></td>
 				 <td> {d.investAmount}</td>
 				 <td> {d.expectedAmount}</td>
 				 <td> {d.tenure}</td>
@@ -77,7 +77,7 @@ const PayoutHome = () => {
 				 <td> 
 				 <Link   to={'/PayoutUpdate/'+d.id} className='text-decoration-none btn bt-sm btn-success'>Update</Link>
 				 <button className='text-decoration-none btn bt-sm btn-danger' onClick={e => handleDelete(d.id)}>Delete</button>
-				 <Link   to={'/PayoutView/'+d.id} className='text-decoration-none btn bt-sm btn-primary'>View</Link>
+				
 				 </td>
 				 
 				 </tr>
