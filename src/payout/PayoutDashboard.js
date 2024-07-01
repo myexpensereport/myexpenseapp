@@ -19,8 +19,12 @@ const PayoutDashboard = () => {
 	const [totalBalanceInvestAmount, setTotalBalanceInvestAmount] = useState([]);
 
 	const [csvData, setCsvData] = useState([]);
-
-
+    
+    //const key = 'person'
+   // const index = 1
+   const [dynamicObject, setDynamicObject] = useState([]);
+   //console.log("dynamicObject:::",dynamicObject.schemeName)
+   
 	const column = [
 		{
 			name: "SchemeName",
@@ -100,7 +104,7 @@ const PayoutDashboard = () => {
 				fontWeight: 'bold',
 				paddingLeft: '0 8px',
 				justifyContent: 'left',
-				backgroundColor: '#00daff',
+				backgroundColor: '#f2f2f2',
 				maxWidth: 300,
 				minWidth: 50,
 				width: 120
