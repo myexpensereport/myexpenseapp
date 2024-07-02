@@ -65,16 +65,6 @@ const PayouUpdate = () => {
 						onChange={e => setInputData({...inputData,investAmount:e.target.value})} />
 					</div>
 					<div>
-						<lable htmlFor='expectedAmount'>Expected Amount:</lable>
-						<input type='text' schemeName='expectedAmount' className='form-control' value= {inputData.expectedAmount}
-						onChange={e => setInputData({...inputData,expectedAmount:e.target.value})} />
-					</div>
-					<div>
-						<lable htmlFor='tenure'>Tenure:</lable>
-						<input type='text' name='tenure' className='form-control' value= {inputData.tenure}
-						onChange={e => setInputData({...inputData,tenure:e.target.value})} />
-					</div>
-					<div>
 						<lable htmlFor='interstAmount'>Interst Amount:</lable>
 						<input type='text' name='interstAmount' className='form-control'value= {inputData.interstAmount}
 						onChange={e => setInputData({...inputData,interstAmount:e.target.value})}  />
@@ -89,17 +79,6 @@ const PayouUpdate = () => {
 						<input type='text' name='bonus' className='form-control' value= {inputData.bonus}
 						onChange={e => setInputData({...inputData,bonus:e.target.value})}  />
 					</div>
-					<div>
-						<lable htmlFor='totalEarned'>TotalEarned:</lable>
-						<input type='text' name='totalEarned' className='form-control' value= {inputData.totalEarned}
-						onChange={e => setInputData({...inputData,totalEarned:e.target.value})} />
-					</div>
-					<div>
-						<lable htmlFor='balanceFund'>BalanceFund:</lable>
-						<input type='text' name='balanceFund' className='form-control' value= {inputData.balanceFund}
-						 onChange={e => setInputData({...inputData,balanceFund:e.target.value})} />
-					</div>
-					
 					<div>
 					<lable >StartDate:</lable>
                         <div className="col-6 mb-3">

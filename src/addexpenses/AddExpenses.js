@@ -60,7 +60,7 @@ const AddExpenses = () => {
 												<option value="Food">NonVeg</option>
 												<option value="Food">OutSideFood</option>
 												<option value="Entertainment">Entertainment</option>
-												<option value="Maintaince">Maintaince</option>
+												<option value="Maintenance">Maintenance</option>
 												<option value="Utilities">Utilities</option>
 												<option value="Sports">Sports</option>
 												<option value="Gift">Gift</option>
@@ -69,6 +69,7 @@ const AddExpenses = () => {
 												<option value="Hospital">Hospital</option>
 												<option value="School">School Fee</option>
 												<option value="Shopping">Shopping</option>
+												<option value="Others">Others</option>
 
 											</select>
 										</div>

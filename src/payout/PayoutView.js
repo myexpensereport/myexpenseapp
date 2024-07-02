@@ -4,7 +4,9 @@ import axios from 'axios';
 import {useNavigate, Link, useParams } from 'react-router-dom';
 import Header from './../common/header';
 
+import PayoutBarChart from '../common/PayoutBarChart';
 
+import { CSVLink } from "react-csv";
 
 
 
@@ -14,6 +16,7 @@ const PayoutView = () => {
 	const navigate = useNavigate();
 	
 	const [data, setData] = useState([]);
+	const [totalReturnAmount, setTotalReturnAmount] = useState([]);
 	
 	console.log("data is::"+data.schemeName)
 	
@@ -36,11 +39,30 @@ const PayoutView = () => {
 		console.log("updateData::"+data.schemeName)
 	},[])
 	
+	function getReturnedAmount() {
+		let t = 0;
+		const res = data.map(({ interstAmount }) => t = t + interstAmount);
+		console.log("res::::" + res);
+		const finalRes = data.map(({ bonus }) => t = t + bonus);
+		console.log("getReturnedAmount::::" + finalRes);
+		return t;
+	}
+	function getTotalInvestAmount() {
+		const res = data.map(({ investAmount }) =>  investAmount);
+		console.log("investAmount::::" + res);
+	}
 	
 	return (
 		<div className = 'container'>
 		<Header />
+		<div>
+				<div class="bg-success text-white"><b><center> Total Returned Amount = {getReturnedAmount()} </center></b></div>
+			
+			</div>
 		<h2><center>Payout Deatils</center></h2>
+		<div><CSVLink  className="downloadbtn btn-danger" filename="SchemePayout.csv" data={data}>Export to CSV
+			</CSVLink>
+		</div>
 		<table className='table'>
 		 	<thead> 
 		 	<tr>
@@ -51,8 +73,6 @@ const PayoutView = () => {
 		 	<th>Interst Amount</th>
 		 	<th>Reedem</th>
 		 	<th>Bonus</th>
-		 	<th>Total Returned</th>
-		 	<th>Balance Fund</th>
 		 	<th>Start Date</th>
 		 	<th>End Date</th>
 		 	<th>Return Earn Date</th>
@@ -70,8 +90,6 @@ const PayoutView = () => {
 				 <td> {d.interstAmount}</td>
 				 <td> {d.redeem}</td>
 				 <td> {d.bonus}</td>
-				 <td> {d.totalEarned}</td>
-				 <td> {d.balanceFund}</td>
 				 <td> {d.startDate}</td>
 				 <td> {d.endDate}</td>
 				 <td> {d.returnEarnedDate}</td>
@@ -81,7 +99,7 @@ const PayoutView = () => {
 			 ))}
 		 	</tbody>
 		 	 <div> 
-				 <Link   to={'/PayoutHome'} className='btn btn-success'>Back</Link>
+				 <Link   to={'/PayoutDashboard'} className='btn btn-success text-white'>Back</Link>
 				 </div>
 		 </table>
 			

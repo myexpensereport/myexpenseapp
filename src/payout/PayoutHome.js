@@ -62,7 +62,7 @@ const PayoutHome = () => {
 		 	{data.map((d,i) =>(
 				 <tr key ={i}>
 				 <td> {d.id}</td>
-				 <td><Link   to={'/PayoutView/'+d.id} class="text-decoration-underline text-primary">{d.schemeName}</Link></td>
+				 <td>{d.schemeName}</td>
 				 <td> {d.investAmount}</td>
 				 <td> {d.expectedAmount}</td>
 				 <td> {d.tenure}</td>

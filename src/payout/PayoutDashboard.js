@@ -4,6 +4,7 @@ import axios from 'axios';
 import DataTable from 'react-data-table-component';
 import PayoutBarChart from '../common/PayoutBarChart';
 import Header from './../common/header';
+import { Link } from 'react-router-dom';
 
 import { CSVLink } from "react-csv";
 
@@ -19,17 +20,12 @@ const PayoutDashboard = () => {
 	const [totalBalanceInvestAmount, setTotalBalanceInvestAmount] = useState([]);
 
 	const [csvData, setCsvData] = useState([]);
-    
-    //const key = 'person'
-   // const index = 1
-   const [dynamicObject, setDynamicObject] = useState([]);
-   //console.log("dynamicObject:::",dynamicObject.schemeName)
-   
+
 	const column = [
 		{
 			name: "SchemeName",
-			selector: row => row.schemeName,
-			sortable: true,
+			accessor: "row.schemeName",
+			selector: row => <Link to={'/PayoutView/' + row.id} class="text-decoration-underline text-primary">{row.schemeName}</Link>
 		},
 		{
 			name: "Invest Amount",
@@ -51,13 +47,13 @@ const PayoutDashboard = () => {
 			selector: row => (row.interstAmount + row.bonus),
 			sortable: true
 		},
-		
+
 		{
 			name: "Tenure",
 			selector: row => row.tenure,
 			sortable: true
 		},
-		
+
 		{
 			name: "Bonus",
 			selector: row => row.bonus,
@@ -84,7 +80,7 @@ const PayoutDashboard = () => {
 			selector: row => row.endDate,
 			sortable: true
 		},
-			{
+		{
 			name: "Return Earn Date",
 			selector: row => row.returnEarnedDate,
 			sortable: true
@@ -115,7 +111,7 @@ const PayoutDashboard = () => {
 		const fetchData = async () => {
 			axios.get(url)
 				.then(res => {
-					console.log("reponse data is ::",res.data)
+					console.log("reponse data is ::", res.data)
 					setRecords(res.data)
 					setFilterRecords(res.data)
 					setTotalInvestAmount(res.data)
@@ -165,7 +161,7 @@ const PayoutDashboard = () => {
 	return (
 		<div>
 			<div><Header />
-			<h5><center>Payout Dashboard</center> </h5>
+				<h5><center>Payout Dashboard</center> </h5>
 			</div>
 			<div class="bg-success text-white"><b><center> Total InvestedAmount = {getTotalInvestAmount()} | Total RedeemedAmount = {getTotalReedemAmount()} | Total Balance InvestedAmount = {getTotalBalanceInvestAmount()}|| Total ReturnedAmount = {getReturnedAmount()}</center></b></div>
 			<div>
@@ -193,6 +189,7 @@ const PayoutDashboard = () => {
 					pagination
 					selectableRows>
 				</DataTable>
+
 			</div>
 		</div >
 	);
