@@ -27,6 +27,10 @@ class AuthService {
 		console.log(savingplan);
         return axios.post(`${API_BASE_URL}/addSavingPlan`, savingplan);
     }
+    updateSavingPlan(id,savingplan) {
+		console.log(savingplan);
+        return axios.post(`${API_BASE_URL}/id`, savingplan);
+    }
 }
 
 export default new AuthService();

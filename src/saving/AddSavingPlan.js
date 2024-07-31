@@ -11,6 +11,7 @@ import Header from './../common/header';
 
 const AddSavingPlan = () => {
 	const [schemeName, setSchemeName] = useState('');
+	const [category, setCategory] = useState('');
 	const [investAmount, setInvestAmount] = useState(0);
 	const [interestAmount, setTnterestAmount] = useState(0);
 	const [message, setMessage] = useState('');
@@ -26,7 +27,7 @@ const AddSavingPlan = () => {
 			console.log(investAmount);
 			console.log(startDate);
 			console.log(endDate);
-			const response = await AuthService.addSavingPlan({ schemeName, investAmount,interestAmount, startDate, endDate });
+			const response = await AuthService.addSavingPlan({ schemeName,category, investAmount,interestAmount, startDate, endDate });
 			setMessage(response.data);
 			if (response.data === 'SavingPlan Add Successfully') {
 				navigate('/SavingPlan');
@@ -59,6 +60,24 @@ const AddSavingPlan = () => {
 											onChange={(e) => setSchemeName(e.target.value)}
 										/>
 									</div>
+									<div className="form-group">
+											<label>Select Category </label>
+											<select name='option'
+												className="form-control" placeholder="Select Category"
+												onChange={(e) => setCategory(e.target.value)}>
+												<option></option>
+												<option value="Gold">Gold</option>
+												<option value="ShareMarket">ShareMarket</option>
+												<option value="MutualFund">MutualFund</option>
+												<option value="Insurance">Insurance</option>
+												<option value="NPS">NPS</option>
+												<option value="Sukanya">Sukanya</option>
+												<option value="TermInsurnace">TermInsurnace</option>
+												<option value="FixedDeposit">FixedDeposit</option>
+												<option value="Others">Others</option>
+
+											</select>
+										</div>
 									<div className="form-group">
 										<label>Invest Amount:</label>
 										<input

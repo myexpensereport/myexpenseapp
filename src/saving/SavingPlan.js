@@ -5,6 +5,7 @@ import axios from 'axios';
 import DataTable from 'react-data-table-component';
 import Header from './../common/header';
 import { CSVLink } from "react-csv";
+import { Link ,useNavigate} from 'react-router-dom';
 
 const SavinPlan = () => {
 
@@ -16,8 +17,22 @@ const SavinPlan = () => {
 	const [totalInvestAmount, setTotalInvestAmount] = useState([]);
 	const [totalInterestAmount, setTotalInterestAmount] = useState([]);
 	const [csvData, setCsvData] = useState([]);
-
-
+	const navigate = useNavigate();
+	function handleDelete(id){
+		const confirm = window.confirm("Do you want to delete Savingplan")
+		if(confirm){
+		axios.delete('http://localhost:8888/myexpense/'+id)
+		.then(res =>{
+			alert("Savingplan Deleted");
+			navigate('/DashboardPage');
+			
+		})	
+		}
+		
+	}
+	
+	
+				
 	const column = [
 		{
 
@@ -29,6 +44,11 @@ const SavinPlan = () => {
 		{
 			name: "Invest Amount",
 			selector: row => row.investAmount,
+			sortable: true
+		},
+		{
+			name: "Category",
+			selector: row => row.category,
 			sortable: true
 		},
 		{
@@ -52,7 +72,20 @@ const SavinPlan = () => {
 			selector: row => row.status,
 			sortable: true
 		},
+		{
+
+			name: "UpdateAction",
+			selector: row => <Link   to={'/UpdateSavingPlan/'+row.id} className='text-decoration-none btn bt-sm btn-success'>Update</Link>,
+			sortable: true
+		},
+		{
+
+			name: "DeleteAction",
+			selector: row => <button className='text-decoration-none btn bt-sm btn-danger' onClick={e => handleDelete(row.id)}>Delete</button>,
+			sortable: true
+		},
 	]
+
 
 	const customStyles = {
 		headCells: {
@@ -93,11 +126,13 @@ const SavinPlan = () => {
 		const res = totalInvestAmount.map(({ investAmount }) => t = t + investAmount);
 		return t;
 	}
+	
 	function getTotalInterestAmount() {
 		let t = 0;
 		const res = totalInterestAmount.map(({ interestAmount }) => t = t + interestAmount);
 		return t;
 	}
+	
 
 	return (
 		<div>

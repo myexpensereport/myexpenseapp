@@ -55,19 +55,10 @@ const AddExpenses = () => {
 												className="form-control" placeholder="Select Category"
 												onChange={(e) => setCategory(e.target.value)}>
 												<option></option>
-												<option value="VegetablesAndFruits">Fruits&Vegetable</option>
-												<option value="Groceries">Groceries</option>
-												<option value="Food">NonVeg</option>
-												<option value="Food">OutSideFood</option>
-												<option value="Entertainment">Entertainment</option>
-												<option value="Maintenance">Maintenance</option>
-												<option value="Utilities">Utilities</option>
-												<option value="Sports">Sports</option>
-												<option value="Gift">Gift</option>
+												<option value="HomeExepnse">HomeExepnse</option>
 												<option value="EMI">Emi</option>
-												<option value="Insurance">Life Insurance</option>
-												<option value="Hospital">Hospital</option>
-												<option value="School">School Fee</option>
+												<option value="MutualFund">MutualFund</option>
+												<option value="Investment">Investment</option>
 												<option value="Shopping">Shopping</option>
 												<option value="Others">Others</option>
 

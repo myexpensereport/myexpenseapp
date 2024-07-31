@@ -10,115 +10,144 @@ import axios from 'axios';
 function DashBoardChart() {
 	 <h5>Pie Chart</h5>
 	 
-	 const dailyurl = 'http://localhost:8888/myexpense/getAllExpensesReport/daily';
-	const weeklyurl = 'http://localhost:8888/myexpense/getAllExpensesReport/weekly';
-	const monthlyurl = 'http://localhost:8888/myexpense/getAllExpensesReport/monthly';
-	const annualurl = 'http://localhost:8888/myexpense/getAllExpensesReport/annual';
-	const totalExpenseurl = 'http://localhost:8888/myexpense/getAllExpensesReport/total';
+	const emiCategoryUrl = 'http://localhost:8888/myexpense/getAllExpensesByCategory/EMI';
+	const mutualfundCategoryUrl = 'http://localhost:8888/myexpense/getAllExpensesByCategory/MutualFund';
+	const shoppingCategoryUrl = 'http://localhost:8888/myexpense/getAllExpensesByCategory/Shopping';
+	const homeexpenseCategoryUrl = 'http://localhost:8888/myexpense/getAllExpensesByCategory/HomeExepnse';
+	const investmentCategoryUrl = 'http://localhost:8888/myexpense/getAllExpensesByCategory/Investment';
+	const othersCategoryUrl = 'http://localhost:8888/myexpense/getAllExpensesByCategory/Others';
 
-	const [daiylyTotalAmount, setDailyTotalAmount] = useState([]);
-	const [weeklyTotalAmount, setWeeklyTotalAmount] = useState([]);
-	const [monthlyTotalAmount, setMonthlyTotalAmount] = useState([]);
-	const [annualTotalAmount, setAnnualTotalAmount] = useState([]);
-	const [totalAmount, setTotalAmount] = useState([]);
+	const [emiCategory, setEmiCategory] = useState([]);
+	const [mutualfundCategory, setMutualfundCategory] = useState([]);
+	const [shoppingCategory, setShoppingCategory] = useState([]);
+	const [homeexpenseCategory, setHomeexpenseCategory] = useState([]);
+	const [investmentCategory, setInvestmentCategory] = useState([]);
+	const [othersCategory, setOthersCategory] = useState([]);
 
 
 	useEffect(() => {
-		const fetchDailyData = async () => {
-			axios.get(dailyurl)
+		const fetchEmiCategoryData = async () => {
+			axios.get(emiCategoryUrl)
 				.then(res => {
-					setDailyTotalAmount(res.data)
+					setEmiCategory(res.data)
 				})
 				.catch(err => console.log(err));
 		}
-		fetchDailyData();
+		fetchEmiCategoryData();
 	}, []);
 
-	function findDailyExpense() {
+	function findEmiCategoryData() {
 		let t = 0;
-		const res = daiylyTotalAmount.map(({ amount }) => t = t + amount);
+		const res = emiCategory.map(({ amount }) => t = t + amount);
 		console.log("res::::" + res);
 		return t;
 	}
-
-	//Weekly Implement :
+	//MutualFund
 	useEffect(() => {
-		const fetchWeeklyData = async () => {
-			axios.get(weeklyurl)
+		const fetchMutualfundCategoryData = async () => {
+			axios.get(mutualfundCategoryUrl)
 				.then(res => {
-					setWeeklyTotalAmount(res.data)
+					setMutualfundCategory(res.data)
 				})
 				.catch(err => console.log(err));
 		}
-		fetchWeeklyData();
+		fetchMutualfundCategoryData();
 	}, []);
 
-	function findWeeklyExpense() {
+	function findMutualfundCategoryData() {
 		let t = 0;
-		const res = weeklyTotalAmount.map(({ amount }) => t = t + amount);
-		console.log("res::::" + res);
-		return t;
-	}
-	//Monthly Implement:
-	useEffect(() => {
-		const fetchMonthlyData = async () => {
-			axios.get(monthlyurl)
-				.then(res => {
-					setMonthlyTotalAmount(res.data)
-				})
-				.catch(err => console.log(err));
-		}
-		fetchMonthlyData();
-	}, []);
-
-	function findMonthlyExpense() {
-		let t = 0;
-		const res = monthlyTotalAmount.map(({ amount }) => t = t + amount);
+		const res = mutualfundCategory.map(({ amount }) => t = t + amount);
 		console.log("res::::" + res);
 		return t;
 	}
 	
-	//Annual Implement::
+	//Shopping
 	useEffect(() => {
-		const fetchAnnualData = async () => {
-			axios.get(annualurl)
+		const fetchShoppingCategoryData = async () => {
+			axios.get(shoppingCategoryUrl)
 				.then(res => {
-					setAnnualTotalAmount(res.data)
+					setShoppingCategory(res.data)
 				})
 				.catch(err => console.log(err));
 		}
-		fetchAnnualData();
+		fetchShoppingCategoryData();
 	}, []);
 
-	function findAnnualExpense() {
+	function findShoppingCategoryData() {
 		let t = 0;
-		const res = annualTotalAmount.map(({ amount }) => t = t + amount);
+		const res = shoppingCategory.map(({ amount }) => t = t + amount);
 		console.log("res::::" + res);
 		return t;
 	}
 	
-	//Total Expense Implement ::
+	//HomeExepnse
 	useEffect(() => {
-		const fetchTotalData = async () => {
-			axios.get(totalExpenseurl)
+		const fetchHomeexpenseCategoryData = async () => {
+			axios.get(homeexpenseCategoryUrl)
 				.then(res => {
-					setTotalAmount(res.data)
+					setHomeexpenseCategory(res.data)
 				})
 				.catch(err => console.log(err));
 		}
-		fetchTotalData();
+		fetchHomeexpenseCategoryData();
 	}, []);
 
-	function findTotalExpense() {
+	function findHomeexpenseCategoryData() {
 		let t = 0;
-		const res = totalAmount.map(({ amount }) => t = t + amount);
+		const res = homeexpenseCategory.map(({ amount }) => t = t + amount);
 		console.log("res::::" + res);
 		return t;
 	}
+	
+	//Investment
+	useEffect(() => {
+		const fetchInvestmentCategoryData = async () => {
+			axios.get(investmentCategoryUrl)
+				.then(res => {
+					setInvestmentCategory(res.data)
+				})
+				.catch(err => console.log(err));
+		}
+		fetchInvestmentCategoryData();
+	}, []);
+
+	function findInvestmentCategoryData() {
+		let t = 0;
+		const res = investmentCategory.map(({ amount }) => t = t + amount);
+		console.log("res::::" + res);
+		return t;
+	}
+	
+	//Others
+	useEffect(() => {
+		const fetchOthersCategoryData = async () => {
+			axios.get(othersCategoryUrl)
+				.then(res => {
+					setOthersCategory(res.data)
+				})
+				.catch(err => console.log(err));
+		}
+		fetchOthersCategoryData();
+	}, []);
+
+	function findOthersCategoryData() {
+		let t = 0;
+		const res = othersCategory.map(({ amount }) => t = t + amount);
+		console.log("res::::" + res);
+		return t;
+	}
+
+	
+	
 	const data = [
-  { value: findDailyExpense(), label: 'D' },
-  { value: findWeeklyExpense(), label: 'W' },
-  { value: findMonthlyExpense(), label: 'M' },
+   { value: findEmiCategoryData(), label: 'E' },
+   { value: findMutualfundCategoryData(), label: 'MF' },
+   { value: findShoppingCategoryData(), label: 'S' },
+    { value: findHomeexpenseCategoryData(), label: 'H' },
+   { value: findInvestmentCategoryData(), label: 'I' },
+   { value: findOthersCategoryData(), label: 'O' },
+   
+  
 ];
 
 const size = {

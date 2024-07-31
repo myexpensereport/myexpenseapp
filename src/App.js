@@ -11,6 +11,8 @@ import LoginPage from './pages/auth/LoginPage'
 import AdminBlankPage from './pages/AdminBlankPage';
 import SavingPlan from './saving/SavingPlan';
 import AddSavingPlan from './saving/AddSavingPlan';
+import UpdateSavingPlan from './saving/UpdateSavingPlan';
+
 import TransanctionHistory from './transanctionhistory/TransanctionHistory';
 import DailyExpense from './transanctionhistory/DailyExpense';
 import WeekelyExpense from './transanctionhistory/WeekelyExpense';
@@ -78,6 +80,9 @@ function App() {
                 <Route exact path='/SavingPlan' element={<SavingPlan/>} />
                 <Route exact path='/AddExpenses' element={<AddExpenses/>} />
                 <Route exact path='/AddSavingPlan' element={<AddSavingPlan/>} />
+                <Route exact path='/UpdateSavingPlan/:id' element={<UpdateSavingPlan/>} />
+                
+                
                 <Route exact path='/TransanctionHistory' element={<TransanctionHistory/>} />
                 <Route exact path='/DailyExpense' element={<DailyExpense/>} />
                 <Route exact path='/WeekelyExpense' element={<WeekelyExpense/>} />
